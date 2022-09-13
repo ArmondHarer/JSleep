@@ -18,7 +18,7 @@ public class JSleep
         return 0;
     }
     
-    public string getHotelName(){
+    public String getHotelName(){
         return "Hotel";
         //string error
     }
