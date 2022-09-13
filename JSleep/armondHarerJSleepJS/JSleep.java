@@ -9,27 +9,36 @@ package armondHarerJSleepJS;
  */
 public class JSleep
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class JSleep
-     */
-    public JSleep()
+    public static void main(String args[])
     {
-        // initialise instance variables
-        x = 0;
+        System.out.println("Please wait, we are still adding features!");
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public int getHotelId(){
+        return 0;
     }
-}
+    
+    public string getHotelName(){
+        return "Hotel";
+        //string error
+    }
+    
+    public boolean isDiscount(){
+        return true;
+    }
+    
+    public float getDiscountedPercentage (int beforeDiscount, int afterDiscount) {
+        int discountValue = (beforeDiscount - afterDiscount);
+        int discountPercentage = (discountValue / beforeDiscount);
+        if (discountValue < 0){
+            discountPercentage = 0;
+            //gak yakin ifnya bener ato nggak
+        }
+        return (float) discountPercentage;
+    }
+    
+    public int getDiscountedPrice (int price, float discountPercentage){
+        int discountedPrice = (price * (1 - discountPercentage));
+        // ada error disini
+    }
+ }
