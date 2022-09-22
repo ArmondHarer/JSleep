@@ -17,8 +17,8 @@ public class Rating
 
     public void insert(int rating)
     {
-        total += rating;
-        count++;
+        this.total += rating;
+        this.count++;
     }
     
     public double getaverage(int count)
@@ -30,17 +30,17 @@ public class Rating
         }
         else
         {
-            return total/count;
+            return this.total/this.count;
         }
     }
     
     public long getcount()
     {
-        return count;
+        return this.count;
     }
     
     public long gettotal()
     {
-        return total;
+        return this.total;
     }
 }

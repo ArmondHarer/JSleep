@@ -4,6 +4,21 @@ package armondHarerJSleepJS;
 public class Price
 {
     public double price;
+    public double discount;
+    
+    public Price (double price)
+    {
+        this.price = price;
+        this.discount = 0;
+    }
+    
+    public Price (double price, double discount)
+    {
+        this.price = price;
+        this.discount = discount;
+    }
+    
+    /*public double price;
     public int discount;
     public double rebate;
 
@@ -31,27 +46,27 @@ public class Price
     private double getdiscountedprice()
     {
         // put your code here
-        if (discount >= 100)
+        if (this.discount >= 100)
         {
-            discount = 100;
+            this.discount = 100;
             return 0;
         }
         else 
         {
-            return price * (discount / 100);
+            return this.price * (this.discount / 100);
         }
     }
     
     private double getRebatedPrice()
     {
-        if (rebate >= price)
+        if (this.rebate >= this.price)
         {
-            rebate = price;
+            this.rebate = this.price;
             return 0;
         }
         else
         {
-            return price - rebate;
+            return this.price - this.rebate;
         }
-    }
+    }*/
 }
