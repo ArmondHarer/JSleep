@@ -28,29 +28,30 @@ public class Price
         this.rebate = rebate;
     }
 
-    public double getdiscountedprice()
+    private double getdiscountedprice()
     {
         // put your code here
-        if (discount > 100.00)
+        if (discount >= 100)
         {
-            price = 0;
-            return price;
+            discount = 100;
+            return 0;
         }
         else 
         {
-            price = price * 100 / discount;
-            return price;
+            return price * (discount / 100);
         }
     }
     
-    public double getRebatedPrice()
+    private double getRebatedPrice()
     {
-        if (rebate > price)
+        if (rebate >= price)
         {
             rebate = price;
+            return 0;
         }
-        
-        price = price - rebate;
-        return price;
+        else
+        {
+            return price - rebate;
+        }
     }
 }

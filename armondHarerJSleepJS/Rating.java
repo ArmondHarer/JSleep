@@ -23,17 +23,15 @@ public class Rating
     
     public double getaverage(int count)
     {
-        double average;
-        if (count < 0)
+        if (count <= 0)
         {
             System.out.println("No inputs available, please try again");
-            average = 0;
+            return 0;
         }
         else
         {
-            average = total / count;
+            return total/count;
         }
-        return average;
     }
     
     public long getcount()
