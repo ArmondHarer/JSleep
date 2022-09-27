@@ -1,6 +1,7 @@
 package armondHarerJSleepJS;
 
 
+/*
 public class Room
 {
     // instance variables - replace the example below with your own
@@ -17,4 +18,21 @@ public class Room
         this.facility = facility;
     }
 }
+*/
 
+public class Room extends Serializable
+{
+    public int Size;
+    public String name;
+    public Price price;
+    public Facility facility;
+    
+    public Room (int id, int Size, String name, Price price, Facility facility)
+    {
+        super(id);
+        this.Size = Size;
+        this.name = name;
+        this.price = price;
+        this.facility = facility;
+    }
+}
