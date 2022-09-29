@@ -43,4 +43,8 @@ public class Rating
     {
         return this.total;
     }
+    
+    public String toString(){
+        return "Rating Tally\nTotal: " + total + "\nCount: " + count;
+    }
 }

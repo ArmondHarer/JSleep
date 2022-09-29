@@ -10,14 +10,13 @@ package armondHarerJSleepJS;
 public class Serializable
 {
     // instance variables - replace the example below with your own
-    final public int id;
+    public final int id;
 
     /**
      * Constructor for objects of class Serializable
      */
     public Serializable(int id)
     {
-        // initialise instance variables
         this.id = id;
     }
 

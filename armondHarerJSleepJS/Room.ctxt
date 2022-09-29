@@ -1,6 +1,8 @@
 #BlueJ class context
 comment0.target=Room
 comment0.text=\r\npublic\ class\ Room\r\n{\r\n\ \ \ \ //\ instance\ variables\ -\ replace\ the\ example\ below\ with\ your\ own\r\n\ \ \ \ public\ int\ size;\ \r\n\ \ \ \ public\ String\ name;\r\n\ \ \ \ public\ Facility\ facility;\r\n\ \ \ \ public\ Price\ price;\r\n\ \ \ \ \r\n\ \ \ \ public\ Room\ (String\ name,\ int\ size,\ Facility\ facility,\ Price\ price)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ this.price\ \=\ price;\r\n\ \ \ \ \ \ \ \ this.name\ \=\ name;\r\n\ \ \ \ \ \ \ \ this.size\ \=\ size;\r\n\ \ \ \ \ \ \ \ this.facility\ \=\ facility;\r\n\ \ \ \ }\r\n}\r\n
-comment1.params=id\ Size\ name\ price\ facility
-comment1.target=Room(int,\ int,\ java.lang.String,\ Price,\ Facility)
-numComments=2
+comment1.params=id\ Size\ name\ price\ facility\ city\ address
+comment1.target=Room(int,\ int,\ java.lang.String,\ Price,\ Facility,\ City,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

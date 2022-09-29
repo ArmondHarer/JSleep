@@ -1,5 +1,6 @@
 package armondHarerJSleepJS;
 
+
 public class Voucher extends Serializable
 {
     public Type type;
@@ -9,7 +10,7 @@ public class Voucher extends Serializable
     public double minimum;
     private boolean used;
     
-     public Voucher (int id, String name, int code, Type type, double minimum, double cut)
+    public Voucher (int id, String name, int code, Type type, double minimum, double cut)
     {
         super(id);
         this.name = name;
@@ -17,27 +18,7 @@ public class Voucher extends Serializable
         this.type = type;
         this.minimum = minimum;
         this.cut = cut;
-        this.used = false;
-    }
-}
-/*
-public class Voucher
-{
-    public Type type;
-    public double cut;
-    public String name;
-    public int code;
-    public double minimum;
-    private boolean used;
-    
-    public Voucher (String name, int code, Type type, double minimum, double cut)
-    {
-        this.name = name;
-        this.code = code;
-        this.type = type;
-        this.minimum = minimum;
-        this.cut = cut;
-        this.used = false;
+        this.used = used;
     }
     
     public boolean isUsed()
@@ -78,4 +59,3 @@ public class Voucher
         }
     }
 }
-*/

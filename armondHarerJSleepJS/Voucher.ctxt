@@ -2,4 +2,10 @@
 comment0.target=Voucher
 comment1.params=id\ name\ code\ type\ minimum\ cut
 comment1.target=Voucher(int,\ java.lang.String,\ int,\ Type,\ double,\ double)
-numComments=2
+comment2.params=
+comment2.target=boolean\ isUsed()
+comment3.params=price
+comment3.target=boolean\ canApply(Price)
+comment4.params=price
+comment4.target=double\ apply(Price)
+numComments=5

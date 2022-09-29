@@ -18,6 +18,11 @@ public class Price
         this.discount = discount;
     }
     
+    public String toString(double price, double discount)
+    {
+        return "Pricing Information : \nPrice : " + price + "\nDiscount Percentage : " + discount;
+    }
+    
     /*public double price;
     public int discount;
     public double rebate;
