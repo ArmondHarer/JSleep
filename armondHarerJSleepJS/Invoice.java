@@ -1,6 +1,7 @@
 package armondHarerJSleepJS;
 
-
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 /**
  * Write a description of class Invoice here.
  *
@@ -12,31 +13,31 @@ public class Invoice extends Serializable
     // instance variables - replace the example below with your own
     public int buyerID;
     public int renterID;
-    public String time;
     public PaymentStatus status;
     public RoomRating rating;
+    public Calendar time;
 
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, int buyerID, int renterID, String time)
+    protected Invoice(int id, int buyerID, int renterID)
     {
         // initialise instance variables
         super(id);
         this.buyerID = buyerID;
         this.renterID = renterID;
-        this.time = time;
+        this.time = Calendar.getInstance();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }
     
-    public Invoice(int id, Account buyer, Renter renter, String time)
+    public Invoice(int id, Account buyer, Renter renter)
     {
         // initialise instance variables
         super(id);
         this.buyerID = buyerID;
         this.renterID = renterID;
-        this.time = time;
+        this.time = Calendar.getInstance();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }

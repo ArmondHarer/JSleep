@@ -24,7 +24,7 @@ public class Complaint extends Serializable
         this.desc = desc;
     }
 
-    public String sampleMethod(int y)
+    public String toString(int y)
     {
         // put your code here
         return "Complaint File\nID :" + super.id + "\nDate : " + date + "\nDescription : " + desc;

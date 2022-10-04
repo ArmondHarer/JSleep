@@ -20,7 +20,7 @@ public class Room
 }
 */
 
-public class Room extends Serializable
+public class Room extends Serializable implements FileParser
 {
     public int Size;
     public String name;
@@ -43,5 +43,13 @@ public class Room extends Serializable
     
     public String toString(){
         return "Room Information : \nId: " + super.id + "\nName: " + name + "\nSize: " + Size + "m^2\nPrice: $" + price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address + "\nBed Type: " + bedType;
+    }
+    
+    public Object write(){
+        return null;
+    }
+
+    public boolean read(String content){
+    return false;
     }
 }
