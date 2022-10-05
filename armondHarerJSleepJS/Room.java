@@ -22,7 +22,7 @@ public class Room
 
 public class Room extends Serializable implements FileParser
 {
-    public int Size;
+    public int size;
     public String name;
     public Price price;
     public Facility facility;
@@ -30,11 +30,10 @@ public class Room extends Serializable implements FileParser
     public BedType bedType;
     public City city;
     
-    public Room (int id, int Size, String name, Price price, Facility facility, City city, String address)
-    {
+    public Room(int id,String name, int size, Price price, Facility facility,City city, String address){
         super(id);
-        this.Size = Size;
         this.name = name;
+        this.size = size;
         this.price = price;
         this.facility = facility;
         this.city = city;
@@ -42,7 +41,7 @@ public class Room extends Serializable implements FileParser
     }
     
     public String toString(){
-        return "Room Information : \nId: " + super.id + "\nName: " + name + "\nSize: " + Size + "m^2\nPrice: $" + price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address + "\nBed Type: " + bedType;
+        return "Room Information : \nId: " + super.id + "\nName: " + name + "\nSize: " + size + "m^2\nPrice: $" + price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address + "\nBed Type: " + bedType;
     }
     
     public Object write(){

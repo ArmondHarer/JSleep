@@ -13,31 +13,25 @@ public class Payment extends Invoice
     // instance variables - replace the example below with your own
     public Calendar to;
     public Calendar from;
-    private int roomID;
+    private int roomId;
 
     /**
      * Constructor for objects of class Payment
      */
-    public Payment(int id, int buyerID, int renterID, int roomID)
+    public Payment(int id, int buyerId, int renterId, int roomId)
     {
         // initialise instance variables
-        super(id, buyerID, renterID);
-        this.roomID = roomID;
+        super(id, buyerId, renterId);
+        this.roomId = roomId;
     }
     
-    public Payment(int id, Account buyer, Renter renter, int roomID, String from)
+    public Payment(int id, Account buyer, Renter renter, int roomId)
     {
         // initialise instance variables
         super(id, buyer, renter);
-        this.roomID = roomID;
+        this.roomId = roomId;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
     
     public String getTime(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
@@ -58,11 +52,11 @@ public class Payment extends Invoice
     public String print()
     {
         // put your code here
-        return ("to : " + to + "\n from : " + from + "\n Room ID : " + roomID);
+        return ("to : " + to + "\n from : " + from + "\n Room ID : " + roomId);
     }
     
-    public int getRoomID()
+    public int getRoomId()
     {
-        return roomID;
+        return roomId;
     }
 }

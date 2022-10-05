@@ -18,7 +18,7 @@ public class Price
         this.discount = discount;
     }
     
-    public String toString(double price, double discount)
+    public String toString()
     {
         return "Pricing Information : \nPrice : " + price + "\nDiscount Percentage : " + discount;
     }

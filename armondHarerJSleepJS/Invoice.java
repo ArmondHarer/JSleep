@@ -11,8 +11,8 @@ import java.text.SimpleDateFormat;
 public class Invoice extends Serializable
 {
     // instance variables - replace the example below with your own
-    public int buyerID;
-    public int renterID;
+    public int buyerId;
+    public int renterId;
     public PaymentStatus status;
     public RoomRating rating;
     public Calendar time;
@@ -20,12 +20,12 @@ public class Invoice extends Serializable
     /**
      * Constructor for objects of class Invoice
      */
-    protected Invoice(int id, int buyerID, int renterID)
+    protected Invoice(int id, int buyerId, int renterId)
     {
         // initialise instance variables
         super(id);
-        this.buyerID = buyerID;
-        this.renterID = renterID;
+        this.buyerId = buyerId;
+        this.renterId = renterId;
         this.time = Calendar.getInstance();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
@@ -35,8 +35,8 @@ public class Invoice extends Serializable
     {
         // initialise instance variables
         super(id);
-        this.buyerID = buyerID;
-        this.renterID = renterID;
+        this.buyerId = buyerId;
+        this.renterId = renterId;
         this.time = Calendar.getInstance();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
@@ -44,8 +44,8 @@ public class Invoice extends Serializable
     
     public String print()
     {
-        String buffer = "ID : " + super.id + "\nBuyer ID : " + buyerID + "\nRenter ID : " + 
-        renterID + "\n Time : " + time;
+        String buffer = "ID : " + super.id + "\nBuyer ID : " + buyerId + "\nRenter ID : " + 
+        renterId + "\n Time : " + time;
         return buffer;
     }
     
