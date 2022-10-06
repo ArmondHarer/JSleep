@@ -54,4 +54,5 @@ public class Room extends Serializable implements FileParser
     public boolean read(String content){
     return false;
     }
+    
 }

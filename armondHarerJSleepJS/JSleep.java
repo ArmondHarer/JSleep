@@ -1,4 +1,5 @@
 package armondHarerJSleepJS;
+import java.sql.Date;
 
 public class JSleep
 {
@@ -17,6 +18,13 @@ public class JSleep
     Date start3 = Date.valueOf("2022-8-18");
     Date end3 = Date.valueOf("2022-8-20");
     System.out.println(Payment.makeBooking(start3, end3,RoomB));
+    }
+    
+    public static Room createRoom()
+    {
+        Price price = new Price (200000, 1000.00);
+        Room room = new Room (1, "Hotel", 30, price, Facility.AC, City.BALI, "Bali Street");
+        return room;
     }
 
     /*
@@ -60,14 +68,6 @@ public class JSleep
         System.out.println(test.size);
         System.out.println(test.facility);
         System.out.println(test.price.price);
-    }
-    
-    public static Room createRoom()
-    {
-        // put your code here
-        Price price = new Price (200000, 1000.00);
-        Room room = new Room ("Economy", 50, Facility.Balcony, price);
-        return room;
     }
     */
 }
