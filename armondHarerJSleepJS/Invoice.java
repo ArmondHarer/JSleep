@@ -1,6 +1,6 @@
 package armondHarerJSleepJS;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 /**
  * Write a description of class Invoice here.
@@ -15,7 +15,7 @@ public class Invoice extends Serializable
     public int renterId;
     public PaymentStatus status;
     public RoomRating rating;
-    public Calendar time;
+    public Date time;
 
     /**
      * Constructor for objects of class Invoice
@@ -26,7 +26,7 @@ public class Invoice extends Serializable
         super(id);
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = Calendar.getInstance();
+        this.time = new Date();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }
@@ -37,7 +37,7 @@ public class Invoice extends Serializable
         super(id);
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = Calendar.getInstance();
+        this.time = new Date();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }
