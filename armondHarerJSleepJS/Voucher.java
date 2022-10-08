@@ -18,7 +18,6 @@ public class Voucher extends Serializable implements FileParser
         this.type = type;
         this.minimum = minimum;
         this.cut = cut;
-        this.used = used;
     }
     
     public boolean isUsed()
