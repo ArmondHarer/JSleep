@@ -7,7 +7,7 @@ package armondHarerJSleepJS;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Complaint extends Serializable
+public class Complaint
 {
     // instance variables - replace the example below with your own
     public String date;
@@ -16,10 +16,9 @@ public class Complaint extends Serializable
     /**
      * Constructor for objects of class Complaint
      */
-    public Complaint(int id, String date, String desc)
+    public Complaint(String date, String desc)
     {
         // initialise instance variables
-        super(id);
         this.date = date;
         this.desc = desc;
     }
@@ -27,6 +26,6 @@ public class Complaint extends Serializable
     public String toString()
     {
         // put your code here
-        return "Complaint File\nID :" + super.id + "\nDate : " + date + "\nDescription : " + desc;
+        return "Complaint File\nDate : " + date + "\nDescription : " + desc;
     }
 }

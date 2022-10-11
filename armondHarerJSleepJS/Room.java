@@ -22,7 +22,7 @@ public class Room
 }
 */
 
-public class Room extends Serializable implements FileParser
+public class Room implements FileParser
 {
     public int size;
     public String name;
@@ -33,8 +33,7 @@ public class Room extends Serializable implements FileParser
     public City city;
     public ArrayList <Date> booked = new ArrayList<Date>();
     
-    public Room(int id,String name, int size, Price price, Facility facility,City city, String address){
-        super(id);
+    public Room(String name, int size, Price price, Facility facility,City city, String address){
         this.name = name;
         this.size = size;
         this.price = price;
@@ -44,7 +43,7 @@ public class Room extends Serializable implements FileParser
     }
     
     public String toString(){
-        return "Room Information : \nId: " + super.id + "\nName: " + name + "\nSize: " + size + "m^2\nPrice: $" + price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address + "\nBed Type: " + bedType;
+        return "Room Information : \nName: " + name + "\nSize: " + size + "m^2\nPrice: $" + price + "\nFacility: " + facility + "\nCity: " + city + "\nAddress: " + address + "\nBed Type: " + bedType;
     }
     
     public Object write(){

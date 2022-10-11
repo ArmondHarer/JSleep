@@ -1,7 +1,7 @@
 package armondHarerJSleepJS;
 
 
-public class Voucher extends Serializable implements FileParser
+public class Voucher implements FileParser
 {
     public Type type;
     public double cut;
@@ -10,9 +10,8 @@ public class Voucher extends Serializable implements FileParser
     public double minimum;
     private boolean used;
     
-    public Voucher (int id, String name, int code, Type type, double minimum, double cut)
+    public Voucher (String name, int code, Type type, double minimum, double cut)
     {
-        super(id);
         this.name = name;
         this.code = code;
         this.type = type;

@@ -22,7 +22,7 @@ public class Payment extends Invoice
     public Payment(int id, int buyerId, int renterId, int roomId, Date to, Date from)
     {
         // initialise instance variables
-        super(id, buyerId, renterId);
+        super(buyerId, renterId);
         this.roomId = roomId;
         this.to = to;
         this.from = from;
@@ -31,7 +31,7 @@ public class Payment extends Invoice
     public Payment(int id, Account buyer, Renter renter, int roomId, Date to, Date from)
     {
         // initialise instance variables
-        super(id, buyer, renter);
+        super(buyer, renter);
         this.roomId = roomId;
         this.to = to;
         this.from = from;

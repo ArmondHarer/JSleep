@@ -15,15 +15,14 @@ package armondHarerJSleepJS;
     public String password;
 }*/
 
-public class Account extends Serializable implements FileParser
+public class Account implements FileParser
 {
     public String name;
     public String email;
     public String password;
     
-    public Account(int id, String name, String email, String password)
+    public Account(String name, String email, String password)
     {
-        super(id);
         this.name = name;
         this.email = email;
         this.password = password;
@@ -31,7 +30,7 @@ public class Account extends Serializable implements FileParser
     
     public String toString()
     {
-        return "Account Information\nID :  " + super.id + "\nName : " + name + "\nEmail Address : " + email  + "\nPassword : " + password;
+        return "Account Information\nName : " + name + "\nEmail Address : " + email  + "\nPassword : " + password;
     }
     
     public Object write(){
