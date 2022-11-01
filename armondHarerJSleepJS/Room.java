@@ -22,7 +22,7 @@ public class Room
 }
 */
 
-public class Room implements FileParser
+public class Room 
 {
     public int size;
     public String name;
@@ -32,14 +32,16 @@ public class Room implements FileParser
     public BedType bedType;
     public City city;
     public ArrayList <Date> booked = new ArrayList<Date>();
+    public int accountID;
     
-    public Room(String name, int size, Price price, Facility facility,City city, String address){
+    public Room(String name, int size, Price price, Facility facility,City city, String address, int accountID){
         this.name = name;
         this.size = size;
         this.price = price;
         this.facility = facility;
         this.city = city;
         this.address = address;
+        this.accountID = accountID;
     }
     
     public String toString(){

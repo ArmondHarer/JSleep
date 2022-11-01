@@ -1,7 +1,7 @@
 package armondHarerJSleepJS;
 
 
-public class Voucher implements FileParser
+public class Voucher
 {
     public Type type;
     public double cut;

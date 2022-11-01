@@ -15,7 +15,7 @@ package armondHarerJSleepJS;
     public String password;
 }*/
 
-public class Account implements FileParser
+public class Account
 {
     public String name;
     public String email;

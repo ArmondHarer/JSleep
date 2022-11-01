@@ -1,6 +1,79 @@
 package armondHarerJSleepJS;
 
-import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.List;
+import java.util.ArrayList;
+import com.google.gson.*;
+
+public class JSleep
+{
+	 public static void main(String[] args)
+	    {
+	        Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
+	        Renter testRegexFail = new Renter("netlab", "081", "Jalan");
+	        System.out.println(testRegex.validate());
+	        System.out.println(testRegexFail.validate());
+
+	        
+	        try{
+	            String filepath = "C:\\Users\\armon\\File Coolyeah Armond\\OOP\\Porgram Armond\\json\\randomRoomList.json";
+	            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
+	            List<Room> filterTableRoom = filterByPrice(tableRoom, 100000, 250000);
+	            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+	        }
+	        catch(Throwable t){
+	            t.printStackTrace();
+	        }
+	        
+	        
+	    }
+	 
+	public static Room createRoom()
+    {
+        Price price = new Price (200000, 1000.00);
+        Room room = new Room ("Armond", 30, price, Facility.AC, City.BALI, "Bali Street",2106634710);
+        return room;
+    }
+	
+	public static List<Room> filterByCity(List<Room> rooms, String city, int page, int pageSize){
+        List<Room> filteredRooms = new ArrayList<>();
+        int start = page * pageSize;
+        int end = start + pageSize;
+        for(int i = 0; i < rooms.size(); i++){
+            Room room = rooms.get(i);
+            if(room.city.name().toLowerCase().contains(city.toLowerCase())){
+                filteredRooms.add(room);
+            }
+        }
+        return filteredRooms;
+    }
+	
+	public static List<Room> filterByPrice(List<Room> rooms, double minPrice, double maxPrice){
+        List<Room> filteredRooms = new ArrayList<>();
+        for(int i = 0; i < rooms.size(); i++){
+            Room room = rooms.get(i);
+            if(room.price.price >= minPrice && room.price.price <= maxPrice){
+                filteredRooms.add(room);
+            }
+        }
+        return filteredRooms;
+    }
+	
+	public static List<Room> filterByAccountId(List<Room> rooms, int accountId, int page, int pageSize){
+        List<Room> filteredRooms = new ArrayList<>();
+        int start = page * pageSize;
+        int end = start + pageSize;
+        for(int i = start; i < rooms.size(); i++){
+            Room room = rooms.get(i);
+            if(room.accountId == accountId){
+                filteredRooms.add(room);
+            }
+        }
+        return filteredRooms;
+    }
+}
+
+/*import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -32,7 +105,7 @@ public class JSleep
 		}
 	}
 }
-
+*/
 
 
 /*import java.sql.Date;
