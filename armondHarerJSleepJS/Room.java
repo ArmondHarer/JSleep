@@ -32,7 +32,7 @@ public class Room
     public BedType bedType;
     public City city;
     public ArrayList <Date> booked = new ArrayList<Date>();
-    public int accountID;
+    public int accountId;
     
     public Room(String name, int size, Price price, Facility facility,City city, String address, int accountID){
         this.name = name;
@@ -41,7 +41,7 @@ public class Room
         this.facility = facility;
         this.city = city;
         this.address = address;
-        this.accountID = accountID;
+        this.accountId = accountId;
     }
     
     public String toString(){

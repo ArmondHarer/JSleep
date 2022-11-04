@@ -1,31 +1,38 @@
 package armondHarerJSleepJS;
 
-import java.io.FileReader;
 import java.util.List;
 import java.util.ArrayList;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
 public class JSleep
 {
 	 public static void main(String[] args)
-	    {
-	        Renter testRegex = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
-	        Renter testRegexFail = new Renter("netlab", "081", "Jalan");
-	        System.out.println(testRegex.validate());
-	        System.out.println(testRegexFail.validate());
-
+	    {	
+	        Renter testRegex1 = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
+	        Renter testRegexFail1 = new Renter("netlab", "081", "Jalan");
+	        Account testRegex2 = new Account("Netlab", "supriyono@ui.ac.id", "Supr1y0n0");
+	        Account testRegexFail2 = new Account("Netlab", "email.salah@gmai1.com", "Armond");
+	        System.out.println(testRegex1.validate());
+	        System.out.println(testRegexFail1.validate());
+	        System.out.println(testRegex2.validate());
+	        System.out.println(testRegexFail2.validate());
 	        
+	        String filepath = "C:\\Users\\armon\\File Coolyeah Armond\\OOP\\Porgram Armond\\json\\Account.json";
+            Gson gson = new Gson();
 	        try{
-	            String filepath = "C:\\Users\\armon\\File Coolyeah Armond\\OOP\\Porgram Armond\\json\\randomRoomList.json";
-	            JsonTable<Room> tableRoom = new JsonTable<>(Room.class, filepath);
-	            List<Room> filterTableRoom = filterByPrice(tableRoom, 100000, 250000);
-	            filterTableRoom.forEach(room -> System.out.println(room.toString()));
+	        	JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+	        	tableAccount.add(new Account("name","email","password"));
+	            tableAccount.writeJson();
+	        	
 	        }
 	        catch(Throwable t){
 	            t.printStackTrace();
 	        }
 	        
-	        
+	        for(int i=0;i < 10; i++) {
+	        	ThreadingObject thread = new ThreadingObject("Thread " + i);
+	        }
 	    }
 	 
 	public static Room createRoom()
@@ -38,7 +45,6 @@ public class JSleep
 	public static List<Room> filterByCity(List<Room> rooms, String city, int page, int pageSize){
         List<Room> filteredRooms = new ArrayList<>();
         int start = page * pageSize;
-        int end = start + pageSize;
         for(int i = 0; i < rooms.size(); i++){
             Room room = rooms.get(i);
             if(room.city.name().toLowerCase().contains(city.toLowerCase())){
@@ -62,7 +68,6 @@ public class JSleep
 	public static List<Room> filterByAccountId(List<Room> rooms, int accountId, int page, int pageSize){
         List<Room> filteredRooms = new ArrayList<>();
         int start = page * pageSize;
-        int end = start + pageSize;
         for(int i = start; i < rooms.size(); i++){
             Room room = rooms.get(i);
             if(room.accountId == accountId){
