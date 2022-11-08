@@ -2,6 +2,8 @@ package com.armondHarerJSleepJS;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import com.armondHarerJSleepJS.dbjson.JsonDBEngine;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
@@ -14,7 +16,11 @@ public class JSleep
 
 	 public static void main(String[] args)
 	    {	
-		 	SpringApplication springApplication=new SpringApplication(JSleep.class);
+		 	JsonDBEngine.Run(JSleep.class);
+		 	SpringApplication.run(JSleep.class, args);
+		 	Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
+	    }
+		 	/*SpringApplication springApplication=new SpringApplication(JSleep.class);
 		 	SpringApplication.run(JSleep.class, args);
 		 	
 		 	
@@ -84,7 +90,7 @@ public class JSleep
             }
         }
         return filteredRooms;
-    }
+    }*/
 }
 
 /*import java.io.BufferedReader;

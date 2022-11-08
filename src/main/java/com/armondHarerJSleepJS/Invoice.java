@@ -1,13 +1,14 @@
 package com.armondHarerJSleepJS;
 
 import java.util.Date;
+import com.armondHarerJSleepJS.dbjson.Serializable;
 /**
  * Write a description of class Invoice here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Invoice
+public class Invoice extends Serializable
 {
     // instance variables - replace the example below with your own
     public int buyerId;
@@ -22,6 +23,7 @@ public class Invoice
     protected Invoice(int buyerId, int renterId)
     {
         // initialise instance variables
+    	super();
         this.buyerId = buyerId;
         this.renterId = renterId;
         this.time = new Date();

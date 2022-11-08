@@ -1,6 +1,7 @@
 package com.armondHarerJSleepJS;
 import java.util.ArrayList;
 import java.util.Date;
+import com.armondHarerJSleepJS.dbjson.Serializable;
 
 
 /*
@@ -22,7 +23,7 @@ public class Room
 }
 */
 
-public class Room 
+public class Room extends Serializable
 {
     public int size;
     public String name;
@@ -35,7 +36,8 @@ public class Room
     public int accountId;
     
     public Room(String name, int size, Price price, Facility facility,City city, String address, int accountID){
-        this.name = name;
+        super();
+    	this.name = name;
         this.size = size;
         this.price = price;
         this.facility = facility;

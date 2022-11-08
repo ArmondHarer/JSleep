@@ -1,4 +1,4 @@
-package com.armondHarerJSleepJS;
+package com.armondHarerJSleepJS.dbjson;
 import java.util.HashMap;
 
 /**
@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Serializable
+public class Serializable implements Comparable<Serializable>
 {
     // instance variables - replace the example below with your own
 	public final int id;
