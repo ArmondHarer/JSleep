@@ -47,7 +47,7 @@ public class AccountController implements BasicGetController<Account>
                     @RequestParam String password
             )
     {
-    	 if(name.isBlank() || !REGEX_PATTERN_EMAIL.matcher(email).matches() || !REGEX_PATTERN_PASSWORD.matcher(password).matches()) {
+    	 /*if(name.isBlank() || !REGEX_PATTERN_EMAIL.matcher(email).matches() || !REGEX_PATTERN_PASSWORD.matcher(password).matches()) {
              return null;
          }
     	 
@@ -55,7 +55,7 @@ public class AccountController implements BasicGetController<Account>
              if(Objects.equals(account.email, email)) {
                  return null;
              }
-         }
+         }*/
          Account NewACC = new Account(name, email, password);
          accountTable.add(NewACC);
          return NewACC;

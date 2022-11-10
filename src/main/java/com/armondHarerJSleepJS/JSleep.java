@@ -19,12 +19,8 @@ public class JSleep
 		 	JsonDBEngine.Run(JSleep.class);
 		 	SpringApplication.run(JSleep.class, args);
 		 	Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
-	    }
-		 	/*SpringApplication springApplication=new SpringApplication(JSleep.class);
-		 	SpringApplication.run(JSleep.class, args);
 		 	
-		 	
-	        Renter testRegex1 = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
+		 	Renter testRegex1 = new Renter("Netlab_", "081234567890", "Jl Margonda Raya");
 	        Renter testRegexFail1 = new Renter("netlab", "081", "Jalan");
 	        Account testRegex2 = new Account("Netlab", "supriyono@ui.ac.id", "Supr1y0n0");
 	        Account testRegexFail2 = new Account("Netlab", "email.salah@gmai1.com", "Armond");
@@ -32,6 +28,9 @@ public class JSleep
 	        System.out.println(testRegexFail1.validate());
 	        System.out.println(testRegex2.validate());
 	        System.out.println(testRegexFail2.validate());
+	    }
+		 	/*SpringApplication springApplication=new SpringApplication(JSleep.class);
+		 	SpringApplication.run(JSleep.class, args);
 	        
 	        String filepath = "C:\\Users\\armon\\File Coolyeah Armond\\OOP\\Porgram Armond\\json\\Account.json";
             Gson gson = new Gson();
