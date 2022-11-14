@@ -22,10 +22,12 @@ public class Account extends Serializable
 {
     public String name;
     public String email;
+    public Renter renter;
     public String password;
+    public Double balance;
     
-    public static final String REGEX_EMAIL = "^[a-zA-Z0-9 ][a-zA-Z0-9]+@[a-zA-Z.]+?\\\\.[a-zA-Z]+?$";
-    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)[a-zA-Z\\\\d]{8,}$";
+    public static final String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z](?!.*\\.)";
+    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*\\s)[a-zA-Z0-9_\\W]{8,}$";
     
     public Account(String name, String email, String password)
     {

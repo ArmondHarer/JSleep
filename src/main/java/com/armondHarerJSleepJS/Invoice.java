@@ -1,6 +1,5 @@
 package com.armondHarerJSleepJS;
 
-import java.util.Date;
 import com.armondHarerJSleepJS.dbjson.Serializable;
 /**
  * Write a description of class Invoice here.
@@ -15,7 +14,7 @@ public class Invoice extends Serializable
     public int renterId;
     public PaymentStatus status;
     public RoomRating rating;
-    public Date time;
+
 
     /**
      * Constructor for objects of class Invoice
@@ -26,7 +25,7 @@ public class Invoice extends Serializable
     	super();
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = new Date();
+        // this.time = new Date();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }
@@ -36,7 +35,7 @@ public class Invoice extends Serializable
         // initialise instance variables
         this.buyerId = buyerId;
         this.renterId = renterId;
-        this.time = new Date();
+        // this.time = new Date();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }
@@ -44,7 +43,7 @@ public class Invoice extends Serializable
     public String print()
     {
         String buffer = "\nBuyer ID : " + buyerId + "\nRenter ID : " + 
-        renterId + "\n Time : " + time;
+        renterId;
         return buffer;
     }
     

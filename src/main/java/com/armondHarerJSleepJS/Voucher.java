@@ -1,7 +1,8 @@
 package com.armondHarerJSleepJS;
 
+import com.armondHarerJSleepJS.dbjson.Serializable;
 
-public class Voucher
+public class Voucher extends Serializable
 {
     public Type type;
     public double cut;

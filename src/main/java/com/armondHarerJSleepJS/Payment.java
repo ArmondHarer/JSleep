@@ -1,6 +1,5 @@
 package com.armondHarerJSleepJS;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -12,36 +11,35 @@ import java.util.Date;
 public class Payment extends Invoice
 {
     // instance variables - replace the example below with your own
+    private int roomId;
     public Date to;
     public Date from;
-    private int roomId;
 
     /**
      * Constructor for objects of class Payment
      */
-    public Payment(int id, int buyerId, int renterId, int roomId, Date to, Date from)
+    public Payment(int buyerId, int renterId, int roomId, Date from, Date to)
     {
         // initialise instance variables
         super(buyerId, renterId);
         this.roomId = roomId;
-        this.to = to;
         this.from = from;
+        this.to = to;
+
     }
     
-    public Payment(int id, Account buyer, Renter renter, int roomId, Date to, Date from)
+    public Payment(Account buyer, Renter renter, int roomId, Date from, Date to)
     {
         // initialise instance variables
         super(buyer, renter);
         this.roomId = roomId;
-        this.to = to;
         this.from = from;
+        this.to = to;
     }
 
-    
-    public String getTime(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
-        String waktu = sdf.format(time.getTime());
-        return "Current date : " + waktu;
+    public int getRoomId()
+    {
+        return roomId;
     }
     
     public static boolean availability(Date from, Date to, Room room){
@@ -66,16 +64,19 @@ public class Payment extends Invoice
         }
         else {return false;}
     }
+    /*public String getTime(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
+        String waktu = sdf.format(time.getTime());
+        return "Current date : " + waktu;
+    }
+    
+    
     public String print()
     {
         // put your code here
         return ("to : " + to + "\n from : " + from + "\n Room ID : " + roomId);
-    }
+    }*/
     
-    public int getRoomId()
-    {
-        return roomId;
-    }
     /*public String getDuration(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
         this.to = Calendar.getInstance();
