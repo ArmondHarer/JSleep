@@ -41,6 +41,7 @@ public class PaymentController implements BasicGetController<Payment>{
 	                   @RequestParam int roomId,
 	                   @RequestParam String from,
 	                   @RequestParam String to) throws ParseException { 
+		 	System.out.println("Test!");
 		 	Account findAccount = Algorithm.<Account>find(AccountController.accountTable, acc -> acc.id == buyerId);
 	        Room findRoom = Algorithm.<Room>find(RoomController.roomTable, room -> room.id == roomId);
 	        double roomPrice = findRoom.price.price;
@@ -54,7 +55,6 @@ public class PaymentController implements BasicGetController<Payment>{
 	        } catch (ParseException e) {
 	            throw new RuntimeException(e);
 	        }
-
 	        if (findAccount.balance >= roomPrice && Payment.availability(fromDate, toDate, findRoom)) {
 	            Payment newPayment = new Payment(buyerId, renterId, roomId, fromDate, toDate);
 	            findAccount.balance -= roomPrice;

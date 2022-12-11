@@ -63,13 +63,14 @@ public class RoomController implements BasicGetController<Room> {
 				@RequestParam double price,
 				@RequestParam ArrayList<Facility> facility,
 				@RequestParam City city,
+				@RequestParam BedType bedtype,
 				@RequestParam String address
 				){
 	    	//Account account = Algorithm.<Account>find(AccountController.accountTable, pred -> pred.id == accountId && pred.renter != null);
 	        //if(account == null){
 	        //    return null;
 	        //}
-	        Room newRoom = new Room(name, size, new Price(price), facility, city, address, accountId);
+	        Room newRoom = new Room(name, size, new Price(price), facility, city, bedtype, address, accountId);
 	        try {
 	        	roomTable.add(newRoom);
 	        	roomTable.writeJson();

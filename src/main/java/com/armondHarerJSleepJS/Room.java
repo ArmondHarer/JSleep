@@ -30,7 +30,7 @@ public class Room extends Serializable
      * @param address	| Alamat kamar
      * @param accountID	| Account ID yang terikat pada kamar
      */
-    public Room(String name, int size, Price price, ArrayList<Facility> facilList,City city, String address, int accountId){
+    public Room(String name, int size, Price price, ArrayList<Facility> facilList,City city, BedType bedtype, String address, int accountId){
         super();
     	this.name = name;
         this.size = size;
@@ -39,6 +39,8 @@ public class Room extends Serializable
         this.city = city;
         this.address = address;
         this.accountId = accountId;
+        this.bedType = bedtype;
+        this.booked = new ArrayList<Date>();
     }
     
     /**
