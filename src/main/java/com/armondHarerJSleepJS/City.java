@@ -2,10 +2,8 @@ package com.armondHarerJSleepJS;
 
 
 /**
- * Enumeration class City - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * City - Kota lokasi Room
+ * @author Armond Harer
  */
 public enum City
 {

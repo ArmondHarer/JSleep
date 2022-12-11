@@ -27,14 +27,6 @@ public class JsonDBEngine
 	private static Thread autosaveThread;
 	private static final HashMap<String, JsonTable<?>> loadedJsonTable = new HashMap<>();
 
-	/**
-	 * Scan for {@link JsonAutowired} then load the json databases.
-	 * This will run a thread to write JsonTable with a given interval.
-	 * Furthermore, this also adjust the counter on {@link Serializable}.
-	 * @param sourceClass referring to it's package name to scan for a candidate components
-	 * which contain {@link JsonAutowired}. Achieved by:
-	 * {@link ClassPathScanningCandidateComponentProvider#findCandidateComponents(String)}
-	 */
 	public static void Run(Class<?> sourceClass)
 	{
 		if (autosaveThread != null)

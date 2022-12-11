@@ -2,10 +2,8 @@ package com.armondHarerJSleepJS;
 
 
 /**
- * Enumeration class BedType - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * BedType - jenis-jenis ukuran kasur dalam Room
+ * @author Armond Harer
  */
 public enum BedType
 {

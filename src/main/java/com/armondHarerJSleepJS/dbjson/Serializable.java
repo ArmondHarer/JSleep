@@ -1,15 +1,9 @@
 package com.armondHarerJSleepJS.dbjson;
 import java.util.HashMap;
 
-/**
- * Write a description of class Serializable here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Serializable implements Comparable<Serializable>
 {
-    // instance variables - replace the example below with your own
+
 	public final int id;
     private static HashMap<Class<?>,Integer> mapCounter = new HashMap<Class<?>,Integer>() ;
     
@@ -28,11 +22,11 @@ public class Serializable implements Comparable<Serializable>
         this.id = count;
     }
 
-    public static <T extends Serializable> Integer getClosingId(Class<T> obj){
+    public static <T> Integer getClosingId(Class<T> obj){
         return mapCounter.get(obj);
     }
 
-    public static <T extends Serializable> Integer setClosingId(Class<T> obj, int data){
+    public static <T> Integer setClosingId(Class<T> obj, int data){
             return mapCounter.put(obj,data);
     }
 

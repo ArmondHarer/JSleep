@@ -1,15 +1,14 @@
 package com.armondHarerJSleepJS;
 
 import com.armondHarerJSleepJS.dbjson.Serializable;
+import java.util.Date;
+
 /**
- * Write a description of class Invoice here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Invoice setelah pelanggan menyewa kamar
+ * @author Armond Harer
  */
 public class Invoice extends Serializable
 {
-    // instance variables - replace the example below with your own
     public int buyerId;
     public int renterId;
     public PaymentStatus status;
@@ -17,40 +16,52 @@ public class Invoice extends Serializable
 
 
     /**
-     * Constructor for objects of class Invoice
+     * @param buyerId	| ID dari pelanggan
+     * @param renterId	| ID dari penyewa
      */
     protected Invoice(int buyerId, int renterId)
     {
-        // initialise instance variables
     	super();
+    	
         this.buyerId = buyerId;
         this.renterId = renterId;
-        // this.time = new Date();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }
     
+    /**
+     * Invoice setelah pelanggan menyewa kamar
+     * 
+     * @param buyer		| Informasi akun pembeli
+     * @param renter	| Informasi renter
+     */
     public Invoice(Account buyer, Renter renter)
     {
         // initialise instance variables
         this.buyerId = buyerId;
         this.renterId = renterId;
-        // this.time = new Date();
         this.status = PaymentStatus.WAITING;
         this.rating = RoomRating.NONE;
     }
     
+    /*
+     * Meng-return ID dari pembeli dan renter
+     */
     public String print()
     {
-        String buffer = "\nBuyer ID : " + buyerId + "\nRenter ID : " + 
-        renterId;
-        return buffer;
+        return "\nBuyer ID : " + buyerId + "\nRenter ID : " + renterId;
     }
     
+    /*
+     * rating dari kamar
+     */
     public enum RoomRating{
         NONE,BAD,NEUTRAL,GOOD
     }
     
+    /*
+     * Status pembayaran untuk kamar
+     */
     public enum PaymentStatus{
         FAILED,WAITING,SUCCESS
     }

@@ -1,18 +1,22 @@
 package com.armondHarerJSleepJS;
 
+import java.util.*;
 
 /**
- * Write a description of class Validate here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Class untuk membandingkan harga
+ * @author Armond Harer
  */
-import java.util.ArrayList;
-
 public class Validate{
     public Validate(){}
     
-public static ArrayList filter (Price[] list, int value, boolean less){ 
+    /**
+     * mengfilter list Price
+     * @param list		| List dari harga-harga room
+     * @param value		| Nilai yang akan dibandingkan
+     * @param less		| Menentukan apabila price dalam list kurang atau tidak 
+     * @return
+     */
+    public static ArrayList<Double> filter (Price[] list, int value, boolean less){ 
     ArrayList<Double> result = new ArrayList<Double>();
     if(less){for(Price i : list){ 
         if(i.price <= value){

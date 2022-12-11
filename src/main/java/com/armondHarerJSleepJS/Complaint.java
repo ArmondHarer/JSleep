@@ -1,32 +1,38 @@
 package com.armondHarerJSleepJS;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import com.armondHarerJSleepJS.dbjson.Serializable;
+
 /**
- * Write a description of class Complaint here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Complaint untuk room yang disewa
+ * @author Armond Harer
  */
 public class Complaint extends Serializable
 {
     // instance variables - replace the example below with your own
-    public String date;
+    Date date;
     public String desc;
 
     /**
-     * Constructor for objects of class Complaint
+     * @Param desc | Deskripsi keluhan pelanggan
      */
-    public Complaint(String date, String desc)
+    public Complaint(String desc)
     {
-        // initialise instance variables
     	super();
-        this.date = date;
+        this.date = new Date();
         this.desc = desc;
     }
 
+    /**
+    * @return informasi keluhan dalam bentuk string
+    */
     public String toString()
     {
+    	 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	 String simpledate = dateFormat.format(this.date);
+
         // put your code here
-        return "Complaint File\nDate : " + date + "\nDescription : " + desc;
+        return "Complaint File\nDate : " + simpledate + "\nDescription : " + desc;
     }
 }

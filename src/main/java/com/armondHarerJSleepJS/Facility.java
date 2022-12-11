@@ -2,10 +2,8 @@ package com.armondHarerJSleepJS;
 
 
 /**
- * Enumeration class Facility - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * Fasilitas-fasilitas yang disediakan dalam room
+ * @author Armond Harer
  */
 public enum Facility
 {

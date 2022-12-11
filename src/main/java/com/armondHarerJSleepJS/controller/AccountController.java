@@ -1,13 +1,14 @@
 package com.armondHarerJSleepJS.controller;
 
 import com.armondHarerJSleepJS.Algorithm;
-import com.armondHarerJSleepJS.Predicate;
 import com.armondHarerJSleepJS.Account;
+import com.armondHarerJSleepJS.Predicate;
 import com.armondHarerJSleepJS.Renter;
 import com.armondHarerJSleepJS.dbjson.*;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import java.util.Objects;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -20,6 +21,10 @@ import java.security.NoSuchAlgorithmException;
 // TODO sesuaikan dengan package Anda: import com.netlabJSleepGS.Account;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Class Java yang akan berhubungan dengan interaksi akun di frontend
+ * @author Armond Harer
+ */
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account>
@@ -34,59 +39,54 @@ public class AccountController implements BasicGetController<Account>
 		}
 	}
 	
+	/**
+	 * Regex untuk verifikasi email dan password
+	 * Untuk email menggunakan format local@domain
+	 * local hanya terdiri dari angka dan huruf, dan domain hanya boleh menggunakan huruf (dan titik di tengah)
+	 * Untuk password wajib memiliki 1 huruf kapital, 1 huruf lowercase, 1 angka, minimal 8 karakter dan tidak ada whitespace
+	 */
 	public static final String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+\\.[a-zA-Z](?!.*\\.)";
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*\\s)[a-zA-Z0-9_\\W]{8,}$";
     public static final Pattern PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
     public static final Pattern PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
     
+    /**
+     * Mengambil tabel Json
+     */
     @Override
     public JsonTable<Account> getJsonTable() {
         return accountTable;
     }
     
+    /**
+     * Login menggunakan akun yang sudah ter-register
+     * @param email		| Alamat email yang terregistrasi dalam akun
+     * @param password	| Password akun
+     * @return Akun yang akan digunakan dalam Android
+     * @throws NoSuchAlgorithmException
+     */
     @PostMapping("/login")
     Account login(@RequestParam String email, @RequestParam String password) throws NoSuchAlgorithmException{
-    	 if(accountTable == null){
-             return null;
-         }
-
-         try {
-
-             MessageDigest md5 = MessageDigest.getInstance("MD5");
-             byte[] messageDigest = md5.digest(password.getBytes());
-             BigInteger no = new BigInteger(1, messageDigest);
-             
-             String hashtext = no.toString(16);
-             while (hashtext.length() < 32) {
-                 hashtext = "0" + hashtext;
-             }
-             password = hashtext;
-         }
-
-         catch (NoSuchAlgorithmException e) {
-             throw new RuntimeException(e);
-         }
-
-         final Predicate<Account> emailPred = pred-> pred.email.equals(email);
-
-         Account foundEmail = Algorithm.<Account>find(accountTable, emailPred);
-         if (Algorithm.exists(accountTable, foundEmail)) {
-             String finalPassword = password;
-             final Predicate<Account> passPred = pred-> pred.password.equals(finalPassword);
-             Account foundPassword = Algorithm.<Account>find(accountTable, passPred);
-             if (Algorithm.exists(accountTable, passPred)){
-                 return foundPassword;
-             } else{
-                 return null;
-             }
-         } else{
-             return null;
-         }
+    	for(Account account : getJsonTable()){
+            String hash = hash(password);
+            if(account.email.equals(email) && account.password.equals(hash)){
+                return account;
+            }
+        }
+        return null;
     	}
     
     @GetMapping
     String index() { return "account page"; }
 
+    /**
+     * Registrasi akun baru
+     * @param name		| Nama user
+     * @param email		| Alamat email user
+     * @param password	| Password
+     * @return Akun baru yang sudah teregistrasi 
+     * @throws NoSuchAlgorithmException
+     */
     @PostMapping("/register")
     Account register
             (
@@ -95,35 +95,30 @@ public class AccountController implements BasicGetController<Account>
                     @RequestParam String password
             )
             		throws NoSuchAlgorithmException{
-    	Account beforeEncrypt = new Account(name, email, password);
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] messageDigest = md.digest(password.getBytes());
-            BigInteger no = new BigInteger(1, messageDigest);
-            String hashtext = no.toString(16);
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-            password = hashtext;
-        }
-        catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+    	Matcher matcherEmail = PATTERN_EMAIL.matcher(email);
+        boolean matchEmail = matcherEmail.find();
 
-        Account newAccount = new Account(name, email, password);
-        if (!name.isBlank() /*&& beforeEncrypt.validate()*/) {
-            try{
-              accountTable.add(newAccount);
-              accountTable.writeJson(accountTable, accountTable.filepath);
-        } catch(Throwable t){
-            t.printStackTrace();
-       }
-            return newAccount;
-        }else
-            return null;
+        Matcher matcherPassword = PATTERN_PASSWORD.matcher(password);
+        boolean matchFoundPassword = matcherPassword.find();
+        Account findAccount = Algorithm.<Account> find(getJsonTable(),pred -> pred.email.equals(email));
+        if (findAccount == null && matchEmail && matchFoundPassword) {
+            final String generatedPassword;
+            generatedPassword = hash(password);
+            Account account = new Account(name, email, generatedPassword, 0.00);
+            accountTable.add(account);
+            return account;
+        } return null;
     }
     
-    @PostMapping("account/{id}/registerRenter")
+    /**
+     * Registrasi renter untuk akun
+     * @param id			| ID dari akun yang meng-register renter
+     * @param username		| Nama dari renter
+     * @param address		| Alamat renter (Mengikuti regex di class Renter)
+     * @param phoneNumber	| Nomor telepon renter (Mengikuti regex di class Renter)
+     * @return renter yang terikat pada account tertentu
+     */
+    @PostMapping("{id}/registerRenter")
     Renter registerRenter
             (
                     @PathVariable int id,
@@ -136,13 +131,23 @@ public class AccountController implements BasicGetController<Account>
             if(findaccount.renter == null && findaccount.id == id) {
                 Renter renter = new Renter(username, address, phoneNumber);
                 findaccount.renter = renter;
+                try {
+                  accountTable.writeJson();
+                }catch(Throwable t) {
+                	t.printStackTrace();
+                }
                 return renter;
             	}
     		}
     	return null;
     }
     
-    
+    /**
+     * Top-up balance akun 
+     * @param id		| ID dari akun yang ingin di-top up
+     * @param balance	| Jumlah uang yang ingin di-top up
+     * @return Konfirmasi top up berhasil
+     */
     @PostMapping("/{id}/topUp")
     boolean topUp(@PathVariable int id,
             @RequestParam double balance) {
@@ -156,4 +161,21 @@ public class AccountController implements BasicGetController<Account>
          }else
              return false;
      }
+    
+    /**
+     * Enkripsi password menggunakan MD5 untuk registrasi dan login
+     * @param password | String password yang belum dieknripsi
+     * @return password yang telah dienkripsi 
+     * @throws NoSuchAlgorithmException
+     */
+    public static String hash(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes());
+        byte[] bytes = md.digest();
+        StringBuilder sb = new StringBuilder();
+        for (byte aByte : bytes) {
+            sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
+        }
+        return sb.toString();
+    }
 }
